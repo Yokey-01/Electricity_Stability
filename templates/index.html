@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Stability Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fnautilus.org%2Fwp-content%2Fuploads%2F2013%2F12%2FSR-image.jpg&f=1&nofb=1&ipt=9b5c7d1f86e252f304fd4198514872c63f1a354a3458c900be6bb865c4cff78f&ipo=images'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        h3 {
+            number-align: center;
+            margin-top: 20px;
+            text-align: center;
+            color: rgb(236, 6, 6);
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color:grey;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bolder;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        input[type="number"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+</head>
+<body>
+    <h3>Electricity Stability Prediction</h3>
+    <div class="container">
+        <form action="/result" method="POST">
+            <label for="tau1">Tau1 (reaction time of participant)</label>
+            <input type="number"  step="0.000001" id="tau1" name="tau1">
+            
+            <label for="tau2">Tau2 (reaction time of participant)</label>
+            <input type="number"  step="0.000001" id="tau2" name="tau2">
+            
+            <label for="tau3">Tau3 (reaction time of participant)</label>
+            <input type="number"  step="0.000001" id="tau3" name="tau3">
+            
+            <label for="tau4">Tau4 (reaction time of participant)</label>
+            <input type="number"  step="0.000001" id="tau4" name="tau4">
+            
+            <label for="p1">P1 (absolute value of (p2+p3+p4))</label>
+            <input type="number"  step="0.000001" id="p1" name="p1">
+            
+            <label for="p2">P2 (absolute value of (p1+p3+p4))</label>
+            <input type="number"  step="0.000001" id="p2" name="p2">
+            
+            <label for="p3">P3 (absolute value of (p1+p2+p4))</label>
+            <input type="number"  step="0.000001" id="p3" name="p3">
+            
+            <label for="p4">P4 (absolute value of (p1+p2+p3))</label>
+            <input type="number"  step="0.000001" id="p4" name="p4">
+            
+            <label for="g1">G1 (coefficient (gamma) proportional to price elasticity)</label>
+            <input type="number"  step="0.000001" id="g1" name="g1">
+            
+            <label for="g2">G2 (coefficient (gamma) proportional to price elasticity)</label>
+            <input type="number"  step="0.000001" id="g2" name="g2">
+            
+            <label for="g3">G3 (coefficient (gamma) proportional to price elasticity)</label>
+            <input type="number"  step="0.000001" id="g3" name="g3">
+            
+            <label for="g4">G4 (coefficient (gamma) proportional to price elasticity)</label>
+            <input type="number"  step="0.000001" id="g4" name="g4">
+            
+            <label for="stab">Stab(the maximal real part of the characteristic equation root)</label>
+            <input type="number"  step="0.000001" id="stab" name="stab">
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div class="error">
+      {% if error_message %}
+          <p>{{ error_message }}</p>
+      {% endif %}
+  </div>
+  
+</body>
+</html>
